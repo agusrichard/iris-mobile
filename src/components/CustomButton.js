@@ -7,7 +7,7 @@ export default ({ text, style, handlePress }) => {
       style={[styles.container, style]}
       onPress={ handlePress }
     >
-      <Text style={styles.text}>Submit</Text>
+      <Text style={styles.text}>{ text.toUpperCase() }</Text>
     </TouchableOpacity>
   )
 }
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   },
   text: {
     textAlign: 'center',
-    color: 'white'
+    color: 'white',
+    fontWeight: 'bold'
   }
 })
