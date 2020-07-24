@@ -11,7 +11,9 @@ export default ({ text }) => {
 
 const styles = StyleSheet.create({
   container: {
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
+    marginTop: 2,
+    marginLeft: 8
   },
   text: {
     color: 'crimson',

@@ -43,14 +43,14 @@ export default function Register() {
                   keyboardType="email-address"
                   autoCapitalize="none"
                 />
-                <ErrorText text={errors.email} />
+                <ErrorText text={ touched.email && errors.email} />
                 <CustomTextInput
                   secureTextEntry
                   placeholder="Password"
                   onChangeText={handleChange('password')}
                   value={values.password}
                 />
-                <ErrorText text={errors.password} />
+                <ErrorText text={ touched.password && errors.password} />
                 <CustomButton handlePress={handleSubmit} text="Register"/>
               </>
             )

@@ -42,7 +42,7 @@ export default function Login() {
                   value={values.username}
                   autoCapitalize="none"
                 />
-                <ErrorText text={errors.username} />
+                <ErrorText text={ touched.username && errors.username} />
                 <CustomTextInput 
                   placeholder="Email"
                   onChangeText={handleChange('email')}
@@ -50,14 +50,14 @@ export default function Login() {
                   keyboardType="email-address"
                   autoCapitalize="none"
                 />
-                <ErrorText text={errors.email} />
+                <ErrorText text={ touched.email && errors.email} />
                 <CustomTextInput
                   secureTextEntry
                   placeholder="Password"
                   onChangeText={handleChange('password')}
                   value={values.password}
                 />
-                <ErrorText text={errors.password} />
+                <ErrorText text={ touched.password && errors.password} />
                 <CustomButton handlePress={handleSubmit} text="login"/>
               </>
             )
