@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, ScrollView, Text, TextInput, View } from 'react-native'
+import { StyleSheet, ScrollView, Text, TextInput, View, TouchableOpacity } from 'react-native'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import globalStyles from '../assets/globalStyles'
@@ -15,7 +15,7 @@ const LoginSchema = yup.object().shape({
 })
 
 
-export default function Login() {
+export default function Login({ navigation }) {
   
   return (
     <View style={globalStyles.container}>
@@ -25,7 +25,7 @@ export default function Login() {
       >
         <Text style={globalStyles.title}>Hi, Welcome Back!</Text>
         <Formik
-          initialValues={{ username: '', email: '', password: '' }}
+          initialValues={{ email: '', password: '' }}
           validationSchema={ LoginSchema }
           onSubmit={(values) => {
             console.log('values', values)
@@ -36,13 +36,6 @@ export default function Login() {
             console.log('touched', touched)
             return (
               <>
-                <CustomTextInput 
-                  placeholder="Username"
-                  onChangeText={handleChange('username')}
-                  value={values.username}
-                  autoCapitalize="none"
-                />
-                <ErrorText text={ touched.username && errors.username} />
                 <CustomTextInput 
                   placeholder="Email"
                   onChangeText={handleChange('email')}
@@ -58,7 +51,10 @@ export default function Login() {
                   value={values.password}
                 />
                 <ErrorText text={ touched.password && errors.password} />
-                <CustomButton handlePress={handleSubmit} text="login"/>
+                <CustomButton handlePress={handleSubmit} text="Login"/>
+                <TouchableOpacity style={{ marginTop: 10 }} onPress={ () => navigation.navigate('Register') }>
+                  <Text style={globalStyles.mutedText}>Have no account yet? <Text style={globalStyles.link}>Here</Text></Text>
+                </TouchableOpacity>
               </>
             )
           }}

@@ -13,5 +13,14 @@ export default StyleSheet.create({
     marginBottom: 50,
     fontSize: 24,
     color: '#525252'
+  },
+  mutedText: {
+    color: '#777',
+    fontSize: 13,
+    fontWeight: 'bold'
+  },
+  link: {
+    color: '#0000FF',
+    fontWeight: 'normal'
   }
 })

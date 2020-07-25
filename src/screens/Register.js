@@ -6,6 +6,7 @@ import globalStyles from '../assets/globalStyles'
 import CustomTextInput from '../components/CustomTextInput'
 import ErrorText from '../components/ErrorText'
 import CustomButton from '../components/CustomButton'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 
 
 const RegisterSchema = yup.object().shape({
@@ -15,7 +16,7 @@ const RegisterSchema = yup.object().shape({
 })
 
 
-export default function Register() {
+export default function Register({ navigation }) {
   
   return (
     <View style={globalStyles.container}>
@@ -25,7 +26,7 @@ export default function Register() {
       >
         <Text style={globalStyles.title}>Nice to meet you!</Text>
         <Formik
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ username: '', email: '', password: '' }}
           validationSchema={ RegisterSchema }
           onSubmit={(values) => {
             console.log('values', values)
@@ -36,6 +37,13 @@ export default function Register() {
             console.log('touched', touched)
             return (
               <>
+                <CustomTextInput 
+                  placeholder="Username"
+                  onChangeText={handleChange('username')}
+                  value={values.username}
+                  autoCapitalize="none"
+                />
+                <ErrorText text={ touched.username && errors.username} />
                 <CustomTextInput 
                   placeholder="Email"
                   onChangeText={handleChange('email')}
@@ -52,6 +60,9 @@ export default function Register() {
                 />
                 <ErrorText text={ touched.password && errors.password} />
                 <CustomButton handlePress={handleSubmit} text="Register"/>
+                <TouchableOpacity style={{ marginTop: 10 }} onPress={ () => navigation.navigate('Login') }>
+                  <Text style={globalStyles.mutedText}>Already has account? <Text style={globalStyles.link}>Here</Text></Text>
+                </TouchableOpacity>
               </>
             )
           }}
