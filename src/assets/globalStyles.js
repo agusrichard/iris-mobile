@@ -7,7 +7,7 @@ export default StyleSheet.create({
   },
   scroll: {
     alignItems: 'center',
-    paddingTop: 65
+    paddingTop: 55
   },
   title: {
     marginBottom: 50,

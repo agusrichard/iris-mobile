@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
     width: '100%',
     paddingVertical: 8,
     paddingHorizontal: 16,
-    marginTop: 8
+    marginTop: 6
   }
 })

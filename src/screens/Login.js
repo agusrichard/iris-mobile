@@ -1,21 +1,22 @@
-import React from 'react'
-import { StyleSheet, ScrollView, Text, TextInput, View, TouchableOpacity } from 'react-native'
+import React, { useContext } from 'react'
+import { ScrollView, Text, View, TouchableOpacity } from 'react-native'
 import { Formik } from 'formik'
 import * as yup from 'yup'
 import globalStyles from '../assets/globalStyles'
 import CustomTextInput from '../components/CustomTextInput'
 import ErrorText from '../components/ErrorText'
 import CustomButton from '../components/CustomButton'
+import { Context } from '../contexts/Context'
 
 
 const LoginSchema = yup.object().shape({
-  username: yup.string().required('Username is required'),
   email: yup.string().email().required('Email is required'),
   password: yup.string().required('Password is required')
 })
 
 
 export default function Login({ navigation }) {
+  const { isLoading, isLoggedIn, token, login } = useContext(Context)
   
   return (
     <View style={globalStyles.container}>
@@ -29,6 +30,7 @@ export default function Login({ navigation }) {
           validationSchema={ LoginSchema }
           onSubmit={(values) => {
             console.log('values', values)
+            login()
           }}
         >
           {({ values, errors, touched, handleChange, handleSubmit }) => {
