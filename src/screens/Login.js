@@ -30,7 +30,7 @@ export default function Login({ navigation }) {
           validationSchema={ LoginSchema }
           onSubmit={(values) => {
             console.log('values', values)
-            login()
+            login({ email: values.email, password: values.password })
           }}
         >
           {({ values, errors, touched, handleChange, handleSubmit }) => {
